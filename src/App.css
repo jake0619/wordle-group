@@ -52,6 +52,18 @@
   width: 34px;
 }
 
+.green {
+  background-color: green;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.gray {
+  background-color: gray;
+}
+
 .rowOfSquares {
   display: table;
   margin-left: auto;

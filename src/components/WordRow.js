@@ -16,11 +16,26 @@ class WordRow extends React.Component{
     }
     else{
       const word = this.props.word
+      const correctWord = this.props.correctWord
       console.log('found word: '+word)
-      for(let c of word){
-        squares.push(
-          <Square value={c}/>
-        )
+      for(let i = 0; i<word.length; i++){
+
+        if(word.charAt(i) == correctWord.charAt(i)){
+          squares.push(
+            <Square value={word.charAt(i)} color={"green"}/>
+          )
+        }
+        else if(correctWord.includes(word.charAt(i))){
+          squares.push(
+            <Square value={word.charAt(i)} color={"orange"}/>
+          )
+        }
+        else{
+          squares.push(
+            <Square value={word.charAt(i)} color={"gray"}/>
+          )
+        }
+        
       }
     }
     

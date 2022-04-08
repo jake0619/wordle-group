@@ -24,7 +24,7 @@ class Rows extends React.Component{
       divs.push(
         <div key={i} className='rowOfSquares'>
         {console.log(arrOfAttempts[i])}
-        <WordRow word={arrOfAttempts[i]}/>
+        <WordRow word={arrOfAttempts[i]} correctWord={this.props.correctWord}/>
         </div>
       )
       

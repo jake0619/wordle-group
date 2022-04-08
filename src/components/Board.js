@@ -35,7 +35,7 @@ class Board extends React.Component {
     return(
       <div>
         
-        <Rows attempts={this.state.attempts}/>
+        <Rows attempts={this.state.attempts} correctWord={this.state.word}/>
         <Input onSubmit={this.handleSubmitWord}/>
       </div>
     )
