@@ -2,6 +2,7 @@ import React from 'react'
 import Square from './Square'
 import Input from './Input'
 import Rows from './Rows'
+import Keyboard from './keyboard'
 
 class Board extends React.Component {
 
@@ -36,7 +37,10 @@ class Board extends React.Component {
       <div>
         
         <Rows attempts={this.state.attempts} correctWord={this.state.word}/>
+        <br></br>
         <Input onSubmit={this.handleSubmitWord}/>
+        <br></br>
+        <Keyboard/>
       </div>
     )
     
