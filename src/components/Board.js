@@ -9,14 +9,46 @@ class Board extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      //keeps track of full words submitted
       attempts: [],
+      //word to guess
       word: "maple",
-
+      //keeps track of # of attempts
+      attempt: 0, 
+      //keeps track of current word
+      currWord: ""
     }
   }
 
   
-  
+  handleKeyClicked = (input) =>{
+    if(input === "del"){
+      this.setState({
+        currWord: this.state.currWord.slice(0, -1)
+      })
+      console.log("delete clicked! ", this.state.currWord)
+    }
+    //if enter is clicked and the word is 5 letters long
+    else if(input === "enter" && this.state.currWord.length == 5){
+      this.setState({
+        attempts: this.state.attempts.concat(this.state.currWord)
+      })
+      console.log("enter clicked! ", this.state.currWord)
+    }
+    //adding letters to currWord
+    else{
+      if(this.state.currWord.length < 5 && input != "enter"){
+
+        this.setState({
+          currWord: this.state.currWord+=input
+        })
+        
+        console.log("letter key clicked! ", this.state.currWord)
+      }
+      
+    }
+    
+  }
 
   handleSubmitWord = (input) =>{
     const attempts = this.state.attempts
@@ -36,11 +68,14 @@ class Board extends React.Component {
     return(
       <div>
         
-        <Rows attempts={this.state.attempts} correctWord={this.state.word}/>
+        <Rows attempts={this.state.attempts} 
+              correctWord={this.state.word} 
+              attempt={this.state.attempt}
+              currWord={this.state.currWord}/>
         <br></br>
         <Input onSubmit={this.handleSubmitWord}/>
         <br></br>
-        <Keyboard/>
+        <Keyboard onKeyClicked={this.handleKeyClicked}/>
       </div>
     )
     

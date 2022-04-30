@@ -15,11 +15,11 @@ function App() {
 
     <body>
 
-    <div class="game-container">
+    <div className="game-container">
 
-    <div class="title-container">         
+    <div className="title-container">         
         <header>
-            <h1 class="title">WORDLE</h1>
+            <h1 className="title">WORDLE</h1>
         </header>
     </div>
 
