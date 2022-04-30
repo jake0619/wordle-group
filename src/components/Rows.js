@@ -17,26 +17,28 @@ class Rows extends React.Component{
   render(){
     const divs = []
     const arrOfAttempts = this.props.attempts
-    const currAttempt = this.props.currAttempt
+    const currAttempt = this.props.attempt
     const currWord = this.props.currWord
 
-    //if an attempt has been made
+    //generate rows
     for(let i = 0; i<6; i++){
-
+      //generating row for current guess
+      console.log("comparing attempt ", this.props.attempt, " to current row iter ", i)
       if(i == currAttempt){
         divs.push(
           <div key={i} className='rowOfSquares'>
           {console.log("pushing currAttempt")}
-          <WordRow word={currWord} correctWord={this.props.correctWord}/>
+          <WordRow checkSubmission={true} word={currWord} correctWord={this.props.correctWord}/>
           </div>
         )
         
       }
+      //populating old submitted words or non submitted words
       else{
         divs.push(
           <div key={i} className='rowOfSquares'>
           {console.log("pushing non currAttempt")}
-          <WordRow word={arrOfAttempts[i]} correctWord={this.props.correctWord}/>
+          <WordRow checkSubmission={false} word={arrOfAttempts[i]} correctWord={this.props.correctWord}/>
           </div>
         )
       }

@@ -20,7 +20,18 @@ class Board extends React.Component {
     }
   }
 
-  
+
+  //resets game
+  resetGame = () =>{
+    this.setState({
+      attempts: [],
+      attempt: 0, 
+      currWord: ""
+    })
+  }
+
+
+  //keyboard button presses
   handleKeyClicked = (input) =>{
     if(input === "del"){
       this.setState({
@@ -31,9 +42,12 @@ class Board extends React.Component {
     //if enter is clicked and the word is 5 letters long
     else if(input === "enter" && this.state.currWord.length == 5){
       this.setState({
-        attempts: this.state.attempts.concat(this.state.currWord)
+        attempts: this.state.attempts.concat(this.state.currWord),
+        attempt: this.state.attempt+1,
+        currWord: ""
       })
       console.log("enter clicked! ", this.state.currWord)
+      console.log("Attempt increased to ", this.state.attempt)
     }
     //adding letters to currWord
     else{
